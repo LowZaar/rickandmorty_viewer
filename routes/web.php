@@ -1,22 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\CharacterController;
 
-
 Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('home');
+    return redirect()->route('characters.list');
+});
 
 Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect()->route('characters.list');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::group(['prefix' => 'characters', 'controller' => CharacterController::class,'middleware' => 'auth'], function () {
-    Route::get('/', 'index');
+Route::group(['prefix' => 'characters', 'controller' => CharacterController::class], function () {
+    Route::get('/', 'index')->name('characters.list');
+    Route::get('/{id}', 'characterProfile')->name('character.profile');
 });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';

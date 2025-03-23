@@ -1,46 +1,26 @@
 <script setup lang="ts">
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
-import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Clapperboard, Drama, Earth, Folder, LayoutGrid } from 'lucide-vue-next';
+import { Drama, Folder } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import AppearanceTabs from './AppearanceTabs.vue';
 
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: '/dashboard',
-        icon: LayoutGrid,
-    },
     {
         title: 'Characters',
         href: '/characters',
         icon: Drama,
     },
-    {
-        title: 'Locations',
-        href: '/locations',
-        icon: Earth,
-    },
-    {
-        title: 'Episodes',
-        href: '/episodes',
-        icon: Clapperboard,
-    },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
+        title: 'Github',
+        href: 'https://github.com/LowZaar',
         icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
     },
 ];
 </script>
@@ -57,6 +37,7 @@ const footerNavItems: NavItem[] = [
                     </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarMenu>
+            <AppearanceTabs />
         </SidebarHeader>
 
         <SidebarContent>
@@ -65,7 +46,6 @@ const footerNavItems: NavItem[] = [
 
         <SidebarFooter>
             <NavFooter :items="footerNavItems" />
-            <NavUser />
         </SidebarFooter>
     </Sidebar>
     <slot />
